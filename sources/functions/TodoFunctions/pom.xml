@@ -68,16 +68,34 @@
             <groupId>software.amazon.lambda</groupId>
             <artifactId>powertools-tracing</artifactId>
             <version>${powertools}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>software.amazon.lambda</groupId>
             <artifactId>powertools-logging</artifactId>
             <version>${powertools}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>software.amazon.lambda</groupId>
             <artifactId>powertools-metrics</artifactId>
             <version>${powertools}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>

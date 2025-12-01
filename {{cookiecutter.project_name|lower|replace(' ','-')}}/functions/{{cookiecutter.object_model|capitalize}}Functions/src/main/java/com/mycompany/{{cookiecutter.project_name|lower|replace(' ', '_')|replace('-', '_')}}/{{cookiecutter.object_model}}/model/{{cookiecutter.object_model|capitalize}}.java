@@ -3,7 +3,7 @@ package com.mycompany.{{cookiecutter.project_name|lower|replace(' ', '_')|replac
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 @DynamoDbBean
 public class {{cookiecutter.object_model|capitalize}} {

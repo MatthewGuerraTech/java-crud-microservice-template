@@ -92,3 +92,8 @@ nb-configuration.xml
 ## PYTHON
 ##############################
 .pytest_cache
+
+##############################
+## Environment Variables
+##############################
+.envrc

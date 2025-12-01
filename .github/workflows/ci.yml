@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sources
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Java 11
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'corretto'
+        cache: 'maven'
+        cache-dependency-path: sources/functions/TodoFunctions/pom.xml
+        
+    - name: Set up SAM CLI
+      uses: aws-actions/setup-sam@v2
+      
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Clean environment
+      run: make clean
+      
+    - name: Build SAM application
+      run: sam build --parallel --cached
+      
+    - name: Run tests
+      run: make test
+      
+    - name: Generate coverage report
+      run: mvn -f functions/TodoFunctions/pom.xml verify
+      
+    - name: Upload coverage reports
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: sources/functions/TodoFunctions/target/site/jacoco/

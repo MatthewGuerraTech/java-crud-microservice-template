@@ -17,25 +17,9 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  */
-package com.amazonaws.todo_crud_microservice.todo.dataaccess;
+package com.amazonaws.todo_crud_microservice.todo.model;
 
-import java.util.List;
-
-public record PaginatedList<T>(List<T> items, int total, String nextToken) {
-    
-    public PaginatedList(List<T> items, int total) {
-        this(items, total, null);
-    }
-    
-    public List<T> getItems() {
-        return items;
-    }
-    
-    public int getTotal() {
-        return total;
-    }
-    
-    public String getNextToken() {
-        return nextToken;
-    }
+public sealed interface ApiResponse permits SuccessResponse, ErrorResponse {
+    int statusCode();
+    String body();
 }

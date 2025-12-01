@@ -21,7 +21,7 @@ Globals:
   Function:
     Timeout: 300
     Tracing: Active
-    Runtime: java11
+    Runtime: java17
     MemorySize: 512
     CodeUri: functions/{{cookiecutter.object_model|capitalize}}Functions
     Environment:

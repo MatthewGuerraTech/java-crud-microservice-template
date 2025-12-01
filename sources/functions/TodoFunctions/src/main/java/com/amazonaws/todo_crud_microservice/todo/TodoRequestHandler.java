@@ -65,11 +65,15 @@ public abstract class TodoRequestHandler implements RequestHandler<APIGatewayPro
     }
 
     protected APIGatewayProxyResponseEvent badRequest(String message) {
-        return response().withStatusCode(400).withBody("{\"error\":\"Bad request\", \"message\":\"" + message + "\"}");
+        String body = """
+                {"error":"Bad request", "message":"%s"}""".formatted(message);
+        return response().withStatusCode(400).withBody(body);
     }
 
     protected APIGatewayProxyResponseEvent notFound(String message) {
-        return response().withStatusCode(404).withBody("{\"error\":\"Not found\", \"message\":\"" + message + "\"}");
+        String body = """
+                {"error":"Not found", "message":"%s"}""".formatted(message);
+        return response().withStatusCode(404).withBody(body);
     }
 
     protected APIGatewayProxyResponseEvent created(String body) {
@@ -77,7 +81,9 @@ public abstract class TodoRequestHandler implements RequestHandler<APIGatewayPro
     }
 
     protected APIGatewayProxyResponseEvent error() {
-        return response().withStatusCode(500).withBody("{\"error\":\"Internal Server Error\", \"message\":\"Unexpected error\"}");
+        String body = """
+                {"error":"Internal Server Error", "message":"Unexpected error"}""";
+        return response().withStatusCode(500).withBody(body);
     }
 
 }

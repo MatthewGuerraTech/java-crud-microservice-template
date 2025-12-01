@@ -40,7 +40,6 @@ import software.amazon.awssdk.utils.StringUtils;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class TodoDynamoDataAccess implements DataAccess<Todo> {
 
@@ -105,7 +104,7 @@ public class TodoDynamoDataAccess implements DataAccess<Todo> {
         ScanResponse response = ddb.scan(builder.build());
 
         return new PaginatedList<>(
-                response.items().stream().map(this::mapTodo).collect(Collectors.toList()),
+                response.items().stream().map(this::mapTodo).toList(),
                 total.count(),
                 response.hasLastEvaluatedKey() ? response.lastEvaluatedKey().get("id").s() : null
         );

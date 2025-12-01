@@ -21,7 +21,6 @@ import software.amazon.awssdk.utils.StringUtils;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class {{cookiecutter.object_model|capitalize}}DynamoDataAccess implements DataAccess<{{cookiecutter.object_model|capitalize}}> {
 
@@ -86,7 +85,7 @@ public class {{cookiecutter.object_model|capitalize}}DynamoDataAccess implements
         ScanResponse response = ddb.scan(builder.build());
 
         return new PaginatedList<>(
-                response.items().stream().map(this::map{{cookiecutter.object_model|capitalize}}).collect(Collectors.toList()),
+                response.items().stream().map(this::map{{cookiecutter.object_model|capitalize}}).toList(),
                 total.count(),
                 response.hasLastEvaluatedKey() ? response.lastEvaluatedKey().get("id").s() : null
         );

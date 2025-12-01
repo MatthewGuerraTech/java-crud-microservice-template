@@ -17,25 +17,15 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  */
-package com.amazonaws.todo_crud_microservice.todo.dataaccess;
+package com.amazonaws.todo_crud_microservice.todo.model;
 
-import java.util.List;
-
-public record PaginatedList<T>(List<T> items, int total, String nextToken) {
+public record SuccessResponse(int statusCode, String body) implements ApiResponse {
     
-    public PaginatedList(List<T> items, int total) {
-        this(items, total, null);
+    public static SuccessResponse ok(String body) {
+        return new SuccessResponse(200, body);
     }
     
-    public List<T> getItems() {
-        return items;
-    }
-    
-    public int getTotal() {
-        return total;
-    }
-    
-    public String getNextToken() {
-        return nextToken;
+    public static SuccessResponse created(String body) {
+        return new SuccessResponse(201, body);
     }
 }

@@ -16,7 +16,7 @@ import software.amazon.lambda.powertools.metrics.Metrics;
 import software.amazon.lambda.powertools.metrics.MetricsUtils;
 import software.amazon.lambda.powertools.tracing.Tracing;
 
-import javax.validation.*;
+import jakarta.validation.*;
 import java.util.Date;
 import java.util.Set;
 import java.util.stream.Collectors;

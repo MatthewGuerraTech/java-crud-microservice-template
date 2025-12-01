@@ -1,0 +1,14 @@
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "todo-crud-microservice"
+resolve_s3 = true
+s3_prefix = "todo-crud-microservice"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "LogLevel=\"INFO\" RetentionInDays=\"14\" PageSize=\"2\""
+image_repositories = []
+
+[default.global.parameters]
+region = "us-east-1"

@@ -9,6 +9,9 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sources
     
     steps:
     - name: Checkout code
@@ -19,11 +22,8 @@ jobs:
       with:
         java-version: '11'
         distribution: 'corretto'
-        
-    - name: Set up Maven
-      uses: actions/setup-maven@v4
-      with:
-        maven-version: '3.8.6'
+        cache: 'maven'
+        cache-dependency-path: sources/functions/TodoFunctions/pom.xml
         
     - name: Set up SAM CLI
       uses: aws-actions/setup-sam@v2
@@ -47,4 +47,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: coverage-report
-        path: functions/TodoFunctions/target/site/jacoco/
+        path: sources/functions/TodoFunctions/target/site/jacoco/

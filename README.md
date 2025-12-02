@@ -2,7 +2,7 @@
 
 __Note__: this sample is used and described in the blog post: [Operating serverless at scale: Improving consistency](https://aws.amazon.com/blogs/compute/operating-serverless-at-scale-improving-consistency-part-2/)
 
-This is a sample of serverless CRUDL (Create - Read - Update - Delete - List) microservice written in Java (JDK11). It demonstrates the use of AWS Lambda, AWS DynamoDB, Amazon API Gateway and AWS SAM (Serverless Application Model). 
+This is a sample of serverless CRUDL (Create - Read - Update - Delete - List) microservice written in Java (JDK17). It demonstrates the use of AWS Lambda, AWS DynamoDB, Amazon API Gateway and AWS SAM (Serverless Application Model). 
 
 But more important, it also demonstrates how to create a project template (or "archetype", not to be confused with an AWS SAM template file) that you can later use to bootstrap new projects based on this structure, using the AWS SAM CLI and the command `sam init --location`.
 
